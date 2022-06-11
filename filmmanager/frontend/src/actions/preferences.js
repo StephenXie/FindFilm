@@ -17,7 +17,7 @@ export const getPreferences = () => (dispatch, getState) => {
     .catch((err) => dispatch(returnErrors(err.response.data, err.response.status)));
 };
 
-// DELETE LEAD
+// DELETE PREFERENCES
 export const deletePreference = (id) => (dispatch, getState) => {
   axios
     .delete(`/api/preferences/${id}/`, tokenConfig(getState))
@@ -31,7 +31,7 @@ export const deletePreference = (id) => (dispatch, getState) => {
     .catch((err) => console.log(err));
 };
 
-// ADD LEAD
+// ADD PREFERENCES
 export const addPreference = (preference) => (dispatch, getState) => {
   axios
     .post('/api/preferences/', preference, tokenConfig(getState))

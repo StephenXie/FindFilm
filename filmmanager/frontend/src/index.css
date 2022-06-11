@@ -8,3 +8,35 @@
 * {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+img {
+  width: 140px;
+  height: auto;
+}
+
+h1 {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.align-left {
+  float:left;
+}
+
+h3 {
+  float:right;
+}
+
+/* .gradient-text {
+  background: -webkit-linear-gradient(#8479FF, #C68A30);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+} */

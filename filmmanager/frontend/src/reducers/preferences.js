@@ -1,4 +1,4 @@
-import { GET_PREFERENCES, DELETE_LEAD, ADD_LEAD, CLEAR_PREFERENCES } from '../actions/types.js';
+import { GET_PREFERENCES, DELETE_PREFERENCE, ADD_PREFERENCE, CLEAR_PREFERENCES } from '../actions/types.js';
 
 const initialState = {
   preferences: [],
@@ -11,12 +11,12 @@ export default function (state = initialState, action) {
         ...state,
         preferences: action.payload,
       };
-    case DELETE_LEAD:
+    case DELETE_PREFERENCE:
       return {
         ...state,
         preferences: state.preferences.filter((preference) => preference.id !== action.payload),
       };
-    case ADD_LEAD:
+    case ADD_PREFERENCE:
       return {
         ...state,
         preferences: [...state.preferences, action.payload],

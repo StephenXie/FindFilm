@@ -3,10 +3,14 @@ import React from 'react'
 const HomePage = () => {
     return (
         <div>
-            <head>
+            <h1>
                 FindFilm
-            </head>
-            <img src="logo.png" alt="Movie Logo" />
+            </h1>
+            <img src="../../../static/frontend/image/logo.png" alt="Movie Logo" class="center" />
+            <body>
+                <img src="../../../static/frontend/image/movies.png" alt="Example Movies" class="align-left"/>
+                <h3 class="gradient-text">The easiest way to pick a film that meets your needs.</h3>
+            </body>
         </div>
     )
 }

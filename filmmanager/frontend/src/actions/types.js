@@ -1,6 +1,6 @@
 export const GET_PREFERENCES = 'GET_PREFERENCES';
-export const DELETE_LEAD = 'DELETE_LEAD';
-export const ADD_LEAD = 'ADD_LEAD';
+export const DELETE_PREFERENCE = 'DELETE_PREFERENCE';
+export const ADD_PREFERENCE = 'ADD_PREFERENCE';
 export const GET_ERRORS = 'GET_ERRORS';
 export const CREATE_MESSAGE = 'CREATE_MESSAGE';
 export const USER_LOADING = 'USER_LOADING';
