@@ -1,11 +1,11 @@
 {
-  "name": "lead_manager_react_django",
+  "name": "findfilm",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --mode development --watch ./leadmanager/frontend/src/index.js --output ./leadmanager/frontend/static/frontend/main.js",
-    "build": "webpack --mode production ./leadmanager/frontend/src/index.js --output ./leadmanager/frontend/static/frontend/main.js"
+    "dev": "webpack --mode development --watch ./filmmanager/frontend/src/index.js --output ./filmmanager/frontend/static/frontend/main.js",
+    "build": "webpack --mode production ./filmmanager/frontend/src/index.js --output ./filmmanager/frontend/static/frontend/main.js"
   },
   "keywords": [],
   "author": "",
