@@ -1,4 +1,4 @@
-export const GET_LEADS = 'GET_LEADS';
+export const GET_PREFERENCES = 'GET_PREFERENCES';
 export const DELETE_LEAD = 'DELETE_LEAD';
 export const ADD_LEAD = 'ADD_LEAD';
 export const GET_ERRORS = 'GET_ERRORS';
@@ -11,4 +11,4 @@ export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_FAIL = 'REGISTER_FAIL';
-export const CLEAR_LEADS = 'CLEAR_LEADS';
+export const CLEAR_PREFERENCES = 'CLEAR_PREFERENCES';

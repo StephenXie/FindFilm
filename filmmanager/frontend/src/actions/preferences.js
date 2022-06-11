@@ -2,15 +2,15 @@ import axios from 'axios';
 import { createMessage, returnErrors } from './messages';
 import { tokenConfig } from './auth';
 
-import { GET_LEADS, DELETE_LEAD, ADD_LEAD } from './types';
+import { GET_PREFERENCES, DELETE_LEAD, ADD_LEAD } from './types';
 
-// GET LEADS
+// GET PREFERENCES
 export const getPreferences = () => (dispatch, getState) => {
   axios
     .get('/api/preferences/', tokenConfig(getState))
     .then((res) => {
       dispatch({
-        type: GET_LEADS,
+        type: GET_PREFERENCES,
         payload: res.data,
       });
     })

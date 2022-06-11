@@ -1,4 +1,4 @@
-import { GET_LEADS, DELETE_LEAD, ADD_LEAD, CLEAR_LEADS } from '../actions/types.js';
+import { GET_PREFERENCES, DELETE_LEAD, ADD_LEAD, CLEAR_PREFERENCES } from '../actions/types.js';
 
 const initialState = {
   preferences: [],
@@ -6,7 +6,7 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case GET_LEADS:
+    case GET_PREFERENCES:
       return {
         ...state,
         preferences: action.payload,
@@ -21,7 +21,7 @@ export default function (state = initialState, action) {
         ...state,
         preferences: [...state.preferences, action.payload],
       };
-    case CLEAR_LEADS:
+    case CLEAR_PREFERENCES:
       return {
         ...state,
         preferences: [],

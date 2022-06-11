@@ -92,9 +92,9 @@ export const register = ({ username, password, email }) => (dispatch) => {
 // LOGOUT USER
 export const logout = () => (dispatch, getState) => {
   axios
-    .post('/api/auth/logout/', null, tokenConfig(getState))
+    .post('/api/auth/logout', null, tokenConfig(getState))
     .then((res) => {
-      dispatch({ type: 'CLEAR_LEADS' });
+      dispatch({ type: 'CLEAR_PREFERENCES' });
       dispatch({
         type: LOGOUT_SUCCESS,
       });

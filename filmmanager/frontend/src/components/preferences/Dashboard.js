@@ -6,7 +6,7 @@ export default function Dashboard() {
   return (
     <Fragment>
       <Form />
-      <Preferences />
+      {/* <Preferences /> */}
     </Fragment>
   );
 }
