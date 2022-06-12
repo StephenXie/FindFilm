@@ -24,13 +24,13 @@ export class Form extends Component {
     addPreference: PropTypes.func.isRequired,
   };
 
-  
   onChange = (e) => this.setState({ [e.target.name]: e.target.value });
 
-  onSubmit = (e) => {
-    e.preventDefault();
-    const { name, id, status } = this.state;
-    const preference = { name, email, status };
+  onSubmit = () => {
+    // e.preventDefault();
+    console.log('wow');
+    const { id, status } = this.state;
+    const preference = { id, status };
     this.props.addPreference(preference);
     this.setState({ ...this.state, status: 5 });
   };
@@ -38,14 +38,17 @@ export class Form extends Component {
     if (this.state.id + step < 0 || this.state.id + step > this.state.movies.length - 1) {
       alert("You can't go further");
     } else {
-      this.setState({ ...this.state, id: this.state.id + step });
+      console.log('wow');
+      const preference = { movie_id: this.state.id, preference: this.state.status };
+      this.props.addPreference(preference);
+      this.setState({ ...this.state,  status: 5, id: this.state.id + step });
     }
   };
 
   toggleModal = () => {
     this.setState({ ...this.state, modalIsOpen: !this.state.modalIsOpen });
   };
-  
+
   render() {
     const { name, id, status } = this.state;
     const modal = (
@@ -58,7 +61,7 @@ export class Form extends Component {
             ╳
           </button>
           <h2 className="my-2 font-semibold">Movie Overview</h2>
-          <span >{this.state.movies[this.state.id].overview}</span>
+          <span>{this.state.movies[this.state.id].overview}</span>
         </div>
       </div>
     );
@@ -68,7 +71,7 @@ export class Form extends Component {
         <h2 className="mb-5 mx-auto font-bold text-5xl text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
           Add Preference
         </h2>
-        <form className="mx-auto w-4/5 max-w-4/5" onSubmit={this.onSubmit}>
+        <form className="mx-auto w-4/5 max-w-4/5">
           <div class="flex flex-row justify-center">
             <span className="font-bold text-xl mx-auto ">
               Movie title: {this.state.movies[id].title}

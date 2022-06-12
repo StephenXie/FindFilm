@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createMessage, returnErrors } from './messages';
 import { tokenConfig } from './auth';
 
-import { GET_PREFERENCES, DELETE_LEAD, ADD_LEAD } from './types';
+import { GET_PREFERENCES, DELETE_PREFERENCE, ADD_PREFERENCE } from './types';
 
 // GET PREFERENCES
 export const getPreferences = () => (dispatch, getState) => {
@@ -24,7 +24,7 @@ export const deletePreference = (id) => (dispatch, getState) => {
     .then((res) => {
       dispatch(createMessage({ deletePreference: 'Preference Deleted' }));
       dispatch({
-        type: DELETE_LEAD,
+        type: DELETE_PREFERENCE,
         payload: id,
       });
     })
@@ -38,7 +38,7 @@ export const addPreference = (preference) => (dispatch, getState) => {
     .then((res) => {
       dispatch(createMessage({ addPreference: 'Preference Added' }));
       dispatch({
-        type: ADD_LEAD,
+        type: ADD_PREFERENCE,
         payload: res.data,
       });
     })
