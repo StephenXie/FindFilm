@@ -15,6 +15,7 @@ import HomePage from './home/HomePage';
 import { Provider } from 'react-redux';
 import store from '../store';
 import { loadUser } from '../actions/auth';
+import Group from './group/Group';
 
 // Alert Options
 const alertOptions = {
@@ -39,6 +40,7 @@ class App extends Component {
                 <Switch>
                   <PrivateRoute exact path="/dashboard" component={Dashboard} />
                   <Route exact path="/" component={HomePage} />
+                  <Route exact path="/group" component={Group} />
                   <Route exact path="/register" component={Register} />
                   <Route exact path="/login" component={Login} />
                 </Switch>

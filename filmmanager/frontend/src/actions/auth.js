@@ -10,6 +10,7 @@ import {
   LOGOUT_SUCCESS,
   REGISTER_SUCCESS,
   REGISTER_FAIL,
+  GROUP_SUCCESS,
 } from './types';
 
 // CHECK TOKEN & LOAD USER

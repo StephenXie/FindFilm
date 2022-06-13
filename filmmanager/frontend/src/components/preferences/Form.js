@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { addPreference } from '../../actions/preferences';
 import movies from '../../../static/frontend/movies.json';
 import { Modal } from './Modal';
+import Preferences from './Preferences';
 
 function shuffle(a) {
   for (let i = a.length - 1; i > 0; i--) {
@@ -16,8 +17,10 @@ export class Form extends Component {
   state = {
     id: 0,
     status: 5,
+    clicks: 0,
     movies: shuffle(movies.movies),
     modalOpen: false,
+    viewPreferences: false,
   };
 
   static propTypes = {
@@ -26,27 +29,32 @@ export class Form extends Component {
 
   onChange = (e) => this.setState({ [e.target.name]: e.target.value });
 
-  onSubmit = () => {
-    // e.preventDefault();
-    console.log('wow');
-    const { id, status } = this.state;
-    const preference = { id, status };
-    this.props.addPreference(preference);
-    this.setState({ ...this.state, status: 5 });
-  };
+  // onSubmit = () => {
+  //   // e.preventDefault();
+  //   console.log('wow');
+  //   const { id, status } = this.state;
+  //   const preference = { id, status };
+  //   this.props.addPreference(preference);
+  //   this.setState({ ...this.state, status: 5 });
+  // };
   handleClick = (step) => {
+    // this.setState({...this.state, clicks: this.state.clicks+1}); // let preferences update
     if (this.state.id + step < 0 || this.state.id + step > this.state.movies.length - 1) {
       alert("You can't go further");
     } else {
       console.log('wow');
-      const preference = { movie_id: this.state.id, preference: this.state.status };
+      const preference = { movie_id: this.state.movies[this.state.id].id, preference: this.state.status };
       this.props.addPreference(preference);
-      this.setState({ ...this.state,  status: 5, id: this.state.id + step });
+      this.setState({ ...this.state,  status: 5, clicks: this.state.clicks+1, id: this.state.id + step });
     }
   };
 
   toggleModal = () => {
     this.setState({ ...this.state, modalIsOpen: !this.state.modalIsOpen });
+  };
+
+  toggleViewPreference = () => {
+    this.setState({ ...this.state, viewPreferences: !this.state.viewPreferences });
   };
 
   render() {
@@ -69,7 +77,7 @@ export class Form extends Component {
     return (
       <div className="card card-body mt-4 mb-4">
         <h2 className="mb-5 mx-auto font-bold text-5xl text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
-          Add Preference
+          Preference
         </h2>
         <form className="mx-auto w-4/5 max-w-4/5">
           <div class="flex flex-row justify-center">
@@ -91,6 +99,12 @@ export class Form extends Component {
               className="inline-block px-6 py-2.5 bg-green-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
             >
               Learn more
+            </button>
+            <button
+              onClick={this.toggleViewPreference}
+              className="inline-block px-6 py-2.5 bg-pink-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-pink-700 hover:shadow-lg focus:bg-pink-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-pink-800 active:shadow-lg transition duration-150 ease-in-out"
+            >
+              View preferences
             </button>
           </div>
           {/* <div className="form-group flex flex-row justify-between">
@@ -149,6 +163,7 @@ focus:outline-none focus:ring-0 focus:shadow-none
           </div>
           {this.state.modalIsOpen && modal}
         </form>
+        {this.state.viewPreferences && <Preferences didChange={this.state.clicks}/>}
       </div>
     );
   }
