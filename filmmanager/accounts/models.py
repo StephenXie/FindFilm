@@ -5,5 +5,5 @@ class Group(models.Model):
     # owner = models.ForeignKey(
     #     User, related_name="group", on_delete=models.CASCADE, null=True)
     group_id = models.CharField(max_length=30, primary_key=True)
-    members = models.ManyToManyField(User, blank=True)
+    members = models.ManyToManyField(User, related_name="members", blank=True)
     created_at = models.DateTimeField(auto_now_add=True)

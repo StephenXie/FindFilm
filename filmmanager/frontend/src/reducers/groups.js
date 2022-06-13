@@ -1,4 +1,4 @@
-import { GET_RECOMMENDATIONS, GROUP_SUCCESS } from '../actions/types.js';
+import { GET_RECOMMENDATIONS, GROUP_SUCCESS, GET_MEMBERS } from '../actions/types.js';
 
 const initialState = {
   members: [],
@@ -10,14 +10,20 @@ export default function (state = initialState, action) {
     case GET_RECOMMENDATIONS:
       return {
         ...state,
-        recommendations: action.payload,
+        recommendations: action.payload.movies,
       };
     case GROUP_SUCCESS: {
       return {
         ...state,
         members: action.payload.members,
       };
-    }
+    };
+    case GET_MEMBERS: {
+      return {
+        ...state,
+        members: action.payload.members,
+      };
+    };
     default:
       return state;
   }

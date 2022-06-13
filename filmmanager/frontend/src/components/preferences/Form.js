@@ -107,20 +107,6 @@ export class Form extends Component {
               View preferences
             </button>
           </div>
-          {/* <div className="form-group flex flex-row justify-between">
-            <button
-              onClick={this.handleClick}
-              className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-            >
-              No
-            </button>
-            <button
-              onClick={this.handleClick}
-              className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-            >
-              Yes
-            </button>
-          </div> */}
           <div className="relative pt-1">
             <label htmlFor="customRange3" className="form-label flex flex-row justify-between">
               <span className="">0 - Hate it 🤮</span>

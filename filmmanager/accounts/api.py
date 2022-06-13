@@ -49,9 +49,9 @@ class UserAPI(generics.RetrieveAPIView):
 
 
 class CreateGroupAPI(viewsets.ModelViewSet):
-    permission_classes = [
-        permissions.IsAuthenticated,
-    ]
+    # permission_classes = [ sry bro too many bugs
+    #     permissions.IsAuthenticated,
+    # ]
     serializer_class = GroupSerializer
 
     def get_queryset(self):
@@ -86,9 +86,22 @@ class CreateGroupAPI(viewsets.ModelViewSet):
         # print(group_object.members.all())
         return Response({"group_id": group_object.group_id, "members": [member.id for member in group_object.members.all()]})
 
+
+    def get_members(self,serializer):
+        matched_groups = Group.objects.filter()
+        for group in matched_groups:
+          if group.members.filter(id=self.request.user.id).exists():
+            group_object = group
+            break
+        return Response({"group_id": self.request.data.get("group_id"), "members": [member.id for member in group_object.members.all()]})
+
     def get_recommendations(self, serializer):
-        matched_groups = Group.objects.filter(
-            group_id=self.request.data.get("group_id"))
-        group_object = matched_groups.first()
+        matched_groups = Group.objects.filter()
+        for group in matched_groups:
+          if group.members.filter(id=self.request.user.id).exists():
+            group_object = group
+            break
+        else:
+          return Response({"movies": [526896]})
         movies = generate_movies(group_object.group_id)
         return Response({"movies": movies})

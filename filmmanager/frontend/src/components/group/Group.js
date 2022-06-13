@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { createGroup, getRecommendations } from '../../actions/groups';
+import { createGroup, getRecommendations, getMembers } from '../../actions/groups';
 import movieLookup from '../../../static/frontend/movieLookup.json';
 // import Preferences from './Preferences';
 
@@ -14,10 +14,11 @@ export class Group extends Component {
   };
 
   static propTypes = {
-    recommendations: PropTypes.array.isRequired,
     members: PropTypes.array.isRequired,
+    recommendations: PropTypes.array.isRequired,
     getRecommendations: PropTypes.func.isRequired,
     createGroup: PropTypes.func.isRequired,
+    getMembers: PropTypes.func.isRequired,
   };
 
   onChange = (e) => this.setState({ [e.target.name]: e.target.value });
@@ -35,11 +36,12 @@ export class Group extends Component {
     console.log(this.props.members);
   };
 
-  toggleModal = () => {
-    this.setState({ ...this.state, modalIsOpen: !this.state.modalIsOpen });
+  onRefresh = () => {
+    this.props.getMembers({ group_id: this.state.group_id });
+    this.props.getRecommendations({ group_id: this.state.group_id });
   };
   render() {
-    // const { name, id, status } = this.state;
+    const { group_id } = this.state;
     const modal = (
       <div className="modal-box fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  z-50">
         <div className="add-form bg-white bg-opacity-100 relative w-full">
@@ -75,6 +77,9 @@ export class Group extends Component {
                   type="text"
                   placeholder="Enter code"
                   className="input input-bordered w-full max-w-xs"
+                  value={group_id}
+                  name="group_id"
+                  onChange={this.onChange}
                 />
                 <button
                   onClick={this.onSubmit}
@@ -88,21 +93,40 @@ export class Group extends Component {
           </form>
         )}
         {this.state.hasGroup && (
-            <div className="mx-auto w-4/5 max-w-4/5 flex flex-col justify-center space-y-3">
-                <div className="flex flex-col justify-center font-bold">
-                    <span className="flex flex-row justify-center">
-                    Group ID: {this.state.group_id}
-                    </span>
-                    <span className="flex flex-row justify-center">
-                    Members: {this.props.members}
-                    </span>
-                </div>
+          <div className="mx-auto w-4/5 max-w-4/5 flex flex-col justify-center space-y-3">
+            <div className="flex flex-col justify-center font-bold">
+              <span className="flex flex-row justify-center">Group ID: {this.state.group_id}</span>
+              <span className="flex flex-row justify-center">Members: {this.props.members}</span>
+              <div className="flex flex-col space-y-2">
+              {this.props.recommendations.map((movie) => (
+                
+                <div className="flex flex-row justify-center">
+                  <img
+                    src={
+                      'https://image.tmdb.org/t/p/w500/' +
+                      this.state.movieLookup[movie].poster_path
+                    }
+                    alt={this.state.movieLookup[movie].title}
+                    className="w-20"
+                  ></img>
+                  <span>{this.state.movieLookup[movie].title}</span>     
+                  </div>
+              ))}
+              </div>
+              <button className="btn btn-secondary" onClick={this.onRefresh}>
+                refresh
+              </button>
             </div>
-
-  )}
+          </div>
+        )}
       </div>
     );
   }
 }
 
-export default connect(null, { createGroup })(Group);
+const mapStateToProps = (state) => ({
+  members: state.groups.members,
+  recommendations: state.groups.recommendations,
+});
+
+export default connect(mapStateToProps, { createGroup, getRecommendations, getMembers })(Group);
