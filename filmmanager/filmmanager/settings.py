@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'preferences',
+    'whitenoise.runserver_nostatic',
     'rest_framework',
     'frontend',
     'knox',
