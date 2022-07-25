@@ -1,1 +1,1 @@
-web: gunicorn filmmanager/filmmanager.wsgi:application --log-file - --log-level debug
+web: gunicorn filmmanager.filmmanager.wsgi --log-file -
