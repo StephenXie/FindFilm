@@ -1,1 +1,1 @@
-web: gunicorn Filmmanager.filmmanager.wsgi --log-file -
+web: gunicorn findfilm.filmmanager.wsgi --log-file -
