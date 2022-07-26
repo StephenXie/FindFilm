@@ -38,10 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'frontend',
     'preferences',
     'whitenoise.runserver_nostatic',
     'rest_framework',
-    'frontend',
     'knox',
     'accounts',
 ]
