@@ -60,10 +60,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'filmmanager.urls'
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SECURE_SSL_REDIRECT = False
-ROOT_URLCONF = 'filmmanager.urls'
+# ROOT_URLCONF = 'filmmanager.urls'
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# SECURE_SSL_REDIRECT = False
+# ROOT_URLCONF = 'filmmanager.urls'
 CORS_ALLOW_ALL_ORIGINS = True
 TEMPLATES = [
     {
