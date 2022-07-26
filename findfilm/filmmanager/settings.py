@@ -38,12 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'frontend',
+    'findfilm.frontend',
     'preferences',
+    'accounts',
     'whitenoise.runserver_nostatic',
     'rest_framework',
     'knox',
-    'accounts',
+    
 ]
 
 REST_FRAMEWORK = {
