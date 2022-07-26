@@ -82,18 +82,17 @@ WSGI_APPLICATION = 'filmmanager.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/2.1/ref/settings/#databases
+# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'findfilm',
-        'USER': 'postgres',
-        'PASSWORD': '12345678',
-        'HOST': 'localhost',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+db_from_env = dj_database_url.config(
+    default="postgres://aiqahoyoeefkvs:5d033ba8296034f3faaaf6576d91622c01fbe02dad17277ffd5b3c116621415e@ec2-52-72-99-110.compute-1.amazonaws.com:5432/d32s8ubhl87k4d")
+DATABASES['default'] = db_from_env
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
