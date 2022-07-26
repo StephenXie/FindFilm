@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'findfilm.frontend',
+    'frontend',
     'preferences',
     'accounts',
     'whitenoise.runserver_nostatic',
